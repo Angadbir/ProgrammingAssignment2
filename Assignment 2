@@ -1,0 +1,36 @@
+## Its purpose is to store a matrix and a cach value of the inverse of the matrix
+makeCacheMatrix <- function(x = matrix()) {
+## A function that returns some function
+      m<-NULL                             
+      setmat<-function(y){                      ## contains the following functions
+           x<<-y                                ## setmat sets the matrix
+           m<<-NULL
+      }
+    getmat<-function(){     ## gets the value of a matrix
+     x
+      }
+    setinv<-function(solve){ ## sets the inverse value of the matrix
+     m<<-solve
+     }
+    getinv <- function(){  ## gets the inverse value of the matrix
+    m
+    }
+   list(setmat=setmat,getmat=getmat,setinv=setinv,getinv=getinv)  ## returns a list
+ ## each element of the list is a set function
+}
+ ## the following function calcuates the inverse of matrix
+
+cacheSolve <- function(x, ...) {
+ 
+     m<-x$getinv()              ## the matrix. get the cache value
+     if(!is.null(m)){
+     message("getting cached data") if cache value exists, display a mesage and return the value of the matrix
+     return(m)
+     }
+    data<-x$getmat() ## store the vlue of the matrix in the data variabe.
+    m<-solve(data)
+    x$setinv(m)
+    m   ## return the invers value
+
+        ## Return a matrix that is the inverse of 'x'
+}
